@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -7,6 +8,7 @@ public class Weapon implements Equipment {
 	private int SpeedBonus;
 	private int RequiredStrength;
 	private int RequiredDex;
+	private String name;
 	
 	Weapon(){
 		Random r = new Random();
@@ -15,6 +17,7 @@ public class Weapon implements Equipment {
 		this.SpeedBonus = r.nextInt(5);
 		this.RequiredStrength = (this.AttackBonus + this.ArmorBonus ) / 2;
 		this.RequiredDex = this.SpeedBonus / 2; 
+		this.setName();
 	}
 	
 	Weapon(int AttackBonus, int ArmorBonus){
@@ -23,6 +26,31 @@ public class Weapon implements Equipment {
 		this.SpeedBonus = 0;
 		this.RequiredStrength = 0;
 		this.RequiredDex = 0; 
+		this.setName();
+	}
+	
+	private void setName(){
+		ArrayList<String> name_1 = new ArrayList<String>();
+		ArrayList<String> name_2 = new ArrayList<String>();
+		ArrayList<String> name_3 = new ArrayList<String>();
+		name_1.add("Bastard");
+		name_1.add("Long");
+		name_1.add("Short");
+		name_1.add("Sharp");
+		name_1.add("Blunt");
+		
+		name_2.add("Sword");
+		name_2.add("Spear");
+		name_2.add("Axe");
+		name_2.add("Club");
+		
+		name_3.add("of Sorcery");
+		name_3.add("of Sharpness");
+		name_3.add("of Darkness");
+		name_3.add("of Evil");
+		
+		Random r = new Random();
+		this.name = name_1.get(r.nextInt(name_1.size())) + " " + name_2.get(r.nextInt(name_2.size()))+ " " + name_3.get(r.nextInt(name_3.size()));
 	}
 	
 	@Override
@@ -60,5 +88,10 @@ public class Weapon implements Equipment {
 	@Override
 	public int getRequiredDex() { 
 		return this.RequiredDex;
+	}
+
+	@Override
+	public String getName() {
+		return this.name;
 	}
 }

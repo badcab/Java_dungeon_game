@@ -8,4 +8,5 @@ public interface Equipment {
 	
 	int getRequiredStrength();
 	int getRequiredDex();
+	String getName();
 }

@@ -4,33 +4,76 @@ import java.util.Scanner;
 public class Main {
 
 	/**
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		System.out.println("What type of Hero would you like to be?");
+		System.out.println("1) Barbarion");
+		System.out.println("2) Bard");
 		
-		//ask what type of player they want to be
-		//ask what there name is
+		int player_type = 0;
+
+		while(player_type != 1 && player_type != 2){
+			player_type = sc.nextInt();
+			if(player_type != 1 && player_type != 2){
+				System.out.println("That is not a valid choice, try again...");
+			}
+		}
+		Hero h = null;
 		
-		Hero h = new Bard();
-		//hero type should be selectable
+		if(player_type == 1){
+			h = new Barbarion();
+			System.out.println("You have chosen Barbarion, What is you Name?");
+		}
 		
+		if(player_type == 2){
+			h = new Bard();
+			System.out.println("You have chosen Bard, What is you Name?");
+		}
 		
-		Enemy e = new Enemy(h);
+		String name = "";
+		while(name.length() < 1){
+			name = sc.next();
+		}
 		
+		h.setName(name);
+		System.out.println("Your Name is " + name);
+		boolean done = false;
 		
-		while(h.is_alive()){
-			Game g = new Game(h,e);
-			g.play();
-			if(h.is_alive()){
-				System.out.println("Would you like to play again");
+		while(!done){
+			Enemy e = new Enemy(h);
+			
+			System.out.println("PrePare Yourself " + h.getName() + " You are about to battle " + e.getName());
+			
+			while(h.is_alive()){
+				Game g = new Game(h,e);
+				g.play();
+				if(h.is_alive()){
+					
+					int quit = 0;
+					while(quit != 1 && quit != 2){
+						System.out.println("Would you like to play again");
+						System.out.println("1) Yes");
+						System.out.println("2) No");
+						quit = sc.nextInt();
+						//Exception in thread "main" java.util.InputMismatchException
+						if(quit != 1 && quit != 2){
+							System.out.println("Try again");
+						}
+					}
+					if(quit == 1){
+						done = true;
+					}
+				} else {
+					done = true;
+				}
 			}
 		}
 		
+		System.out.println("Good Game, Come back again soon");
 		
-		//once done ask if they want to play again, make a new enemy
-		 
-
 	}
 
 }

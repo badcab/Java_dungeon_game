@@ -13,6 +13,7 @@ public class Enemy implements Player {
 	Weapon w;
 	Armor a;
 	Helm h;
+	Random r = new Random();
 	
 	Enemy(Hero h){		
 		this.s = new Shield((int)h.s.getAttackBonus() *3 / 4,(int)h.s.getArmorBonus() *3 / 4);//add overide to set states for this
@@ -60,8 +61,7 @@ public class Enemy implements Player {
 		name_2.add("wow coding drunk is awsome");
 		name_2.add("I can't do it at work but on personal projects it is great");
 		name_2.add("and some more text");
-		
-		Random r = new Random();
+
 		this.Name = name_1.get(r.nextInt(name_1.size())) + " " + name_2.get(r.nextInt(name_2.size()));
 	}
 	
@@ -123,18 +123,16 @@ public class Enemy implements Player {
 
 	@Override
 	public boolean useMagic() {
-		// TODO Auto-generated method stub
+		//the Enemy will never actually use magic
 		return false;
 	}
 	@Override
 	public boolean atemptAttack(Player p) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.getAttackMod() + r.nextInt(18) > p.getArmorMod();
 	}
 	@Override
 	public int calculateDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.r.nextInt(this.STR * this.STR + 1);
 	}
 	
 	@Override
@@ -144,6 +142,44 @@ public class Enemy implements Player {
 	
 	public String getName(){
 		return this.Name;
+	}
+	
+	@Override
+	public int getArmorMod(){
+		return this.w.getArmorBonus()
+			+ this.h.getArmorBonus()
+			+ this.a.getArmorBonus()
+			+ this.s.getArmorBonus()
+			+ this.DEX;
+	}
+	
+	@Override
+	public int getAttackMod(){
+		return this.w.getAttackBonus()
+			+ this.h.getAttackBonus()
+			+ this.a.getAttackBonus()
+			+ this.s.getAttackBonus()
+			+ this.STR;
+	}
+	
+	@Override
+	public String getStats(){
+		String result = "Name\t: " + this.Name + '\n';
+		result += "Armor\t: " + this.a.getName() + '\n';
+		result += "\t Attack Bonus:" + this.a.getAttackBonus() + '\n';
+		result += "\t Armor Bonus:" + this.a.getArmorBonus() + '\n';
+		result += "Helm\t: " + this.h.getName() + '\n';
+		result += "\t Attack Bonus:" + this.h.getAttackBonus() + '\n';
+		result += "\t Armor Bonus:" + this.h.getArmorBonus() + '\n';
+		result += "Shield\t: " + this.s.getName() + '\n';
+		result += "\t Attack Bonus:" + this.s.getAttackBonus() + '\n';
+		result += "\t Armor Bonus:" + this.s.getArmorBonus() + '\n';
+		result += "Weapon\t: " + this.w.getName() + '\n';
+		result += "\t Attack Bonus:" + this.w.getAttackBonus() + '\n';
+		result += "\t Armor Bonus:" + this.w.getArmorBonus() + '\n';
+		result += "STR: " + this.STR + " | DEX: " + this.DEX + '\n';
+		result += "HP: " + this.HP + " | Magic: " + this.MagicHP + '\n';
+		return result;
 	}
 
 }

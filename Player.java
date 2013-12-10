@@ -4,10 +4,6 @@ public interface Player {
 	int getMagicHP();
 	void takeDamage(int i);
 	boolean is_alive();
-	
-	//some sort of attack
-		//method will be overwrite
-	
 	boolean changeShield(Shield s);
 	boolean changeWeapon(Weapon w);
 	boolean changeArmor(Armor a);
@@ -17,6 +13,7 @@ public interface Player {
 	int calculateDamage();
 	boolean isHuman();
 	String getName();
-	
-	
+	int getArmorMod();
+	int getAttackMod();
+	String getStats();
 }
