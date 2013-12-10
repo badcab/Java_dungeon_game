@@ -96,4 +96,9 @@ public class Shield implements Equipment {
 	public String getName() {
 		return this.name;
 	}
+	
+	@Override
+	public String getStats() {
+		return this.name + " +" + this.ArmorBonus + " Armor and +" + this.AttackBonus + " Attack"; 
+	}
 }

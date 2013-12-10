@@ -108,7 +108,7 @@ public abstract class Hero implements Player {
 	
 	@Override
 	public int calculateDamage() {
-		return this.r.nextInt(this.STR * this.STR + 1);
+		return this.r.nextInt(this.STR + this.r.nextInt(this.STR));
 	}
 	
 	@Override

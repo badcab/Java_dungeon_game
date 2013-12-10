@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-
+/**
+ * 
+ * @author badcab
+ *
+ */
 public class Armor implements Equipment {
 
 	private int AttackBonus;
@@ -11,6 +15,9 @@ public class Armor implements Equipment {
 	private int RequiredDex;
 	private String name;
 	
+	/**
+	 * 
+	 */
 	Armor(){
 		Random r = new Random();
 		this.AttackBonus = 0;
@@ -21,6 +28,11 @@ public class Armor implements Equipment {
 		this.setName();
 	}
 	
+	/**
+	 * 
+	 * @param AttackBonus
+	 * @param ArmorBonus
+	 */
 	Armor(int AttackBonus, int ArmorBonus){
 		this.AttackBonus = AttackBonus;
 		this.ArmorBonus = ArmorBonus;
@@ -30,6 +42,9 @@ public class Armor implements Equipment {
 		this.setName();
 	}
 	
+	/**
+	 * 
+	 */
 	private void setName(){
 		ArrayList<String> name_1 = new ArrayList<String>();
 		ArrayList<String> name_2 = new ArrayList<String>();
@@ -94,5 +109,10 @@ public class Armor implements Equipment {
 	@Override
 	public String getName() {
 		return this.name;
+	}
+
+	@Override
+	public String getStats() {
+		return this.name + " +" + this.ArmorBonus + " Armor and +" + this.AttackBonus + " Attack"; 
 	}
 }
