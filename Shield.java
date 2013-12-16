@@ -22,8 +22,8 @@ public class Shield implements Equipment {
 	
 	/**
 	 * 
-	 * @param AttackBonus
-	 * @param ArmorBonus
+	 * @param AttackBonus attack bonus Shield will have
+	 * @param ArmorBonus armor bonus Shield will have
 	 */
 	Shield(int AttackBonus, int ArmorBonus){
 		this.AttackBonus = AttackBonus;
