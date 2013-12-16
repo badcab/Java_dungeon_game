@@ -7,7 +7,7 @@ public class Main {
 
 	/**
 	 * 
-	 * @param args
+	 * @param args not used
 	 */
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
