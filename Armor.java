@@ -3,7 +3,7 @@ import java.util.Random;
 
 /**
  * 
- * @author badcab
+ * @author Michael Spear
  *
  */
 public class Armor implements Equipment {
@@ -27,8 +27,8 @@ public class Armor implements Equipment {
 	
 	/**
 	 * 
-	 * @param AttackBonus
-	 * @param ArmorBonus
+	 * @param AttackBonus set attack bonus armor will have
+	 * @param ArmorBonus set armor bonus armor will have
 	 */
 	Armor(int AttackBonus, int ArmorBonus){
 		this.AttackBonus = AttackBonus;
