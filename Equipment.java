@@ -43,7 +43,7 @@ public interface Equipment {
 	
 	/**
 	 * 
-	 * @return return non human readable stats on equipment
+	 * @return return one line human readable stats on equipment
 	 */
 	String getStats();
 }
