@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-
 public class Enemy implements Player {
 
 	protected int HP;
@@ -122,8 +121,7 @@ public class Enemy implements Player {
 	}
 
 	@Override
-	public boolean useMagic() {
-		//the Enemy will never actually use magic
+	public boolean useMagic() { 
 		return false;
 	}
 	@Override

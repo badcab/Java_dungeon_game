@@ -1,3 +1,5 @@
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 
@@ -16,7 +18,12 @@ public class Main {
 		int player_type = 0;
 
 		while(player_type != 1 && player_type != 2){
-			player_type = sc.nextInt();
+			try{
+				player_type = sc.nextInt();
+			}catch(InputMismatchException e1){
+				sc = new Scanner(System.in);
+			}
+			
 			if(player_type != 1 && player_type != 2){
 				System.out.println("That is not a valid choice, try again...");
 			}
@@ -53,14 +60,23 @@ public class Main {
 				if(h.is_alive()){
 					
 					int quit = 0;
+					System.out.println("Would you like to play again");
+					System.out.println("1) Yes");
+					System.out.println("2) No");
 					while(quit != 1 && quit != 2){
-						System.out.println("Would you like to play again");
-						System.out.println("1) Yes");
-						System.out.println("2) No");
-						quit = sc.nextInt();
-						//Exception in thread "main" java.util.InputMismatchException
+						
+						try{
+							quit = sc.nextInt();
+						}catch(InputMismatchException e1){
+							sc = new Scanner(System.in);
+						}catch(NoSuchElementException e2){
+							sc = new Scanner(System.in);
+						}
+						
 						if(quit != 1 && quit != 2){
 							System.out.println("Try again");
+						} else {
+							break;
 						}
 					}
 					if(quit == 1){
@@ -73,7 +89,5 @@ public class Main {
 		}
 		
 		System.out.println("Good Game, Come back again soon");
-		
 	}
-
 }

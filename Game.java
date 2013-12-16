@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,9 +19,6 @@ public class Game {
 		this.enemy = e;
 	}
 	
-	/**
-	 * 
-	 */
 	public void play(){
 		Player p1 = this.hero;
 		Player p2 = this.enemy;
@@ -28,31 +26,32 @@ public class Game {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		while(this.hero.is_alive() && this.enemy.is_alive()){
-			//this is the main game loop
+		while(this.hero.is_alive() && this.enemy.is_alive()){ 
 			if(p1.isHuman()){
-				//if hero then ask if they want to attack or use magic
-				
 				int action = 0;
 				while(action < 1 || action > 3){
 					System.out.println(p1.getName() + " what would you like to do?");
 					System.out.println("1) Attack");
 					System.out.println("2) Use Magic");
 					System.out.println("3) Look for better Equipment");
-					action = sc.nextInt();
+					
+					try{
+						action = sc.nextInt();
+					}catch(InputMismatchException e1){
+						sc = new Scanner(System.in);
+					}
+					
 					if(action < 1 || action > 3){
 						System.out.println("Try again");
 					}
 				}
 				
-				if(action == 1){
-					//attack
+				if(action == 1){ 
 					if(p1.atemptAttack(p2)){
 						int damage = p1.calculateDamage();
 						p2.takeDamage(damage); 
 						System.out.println(this.attackSuccessfulVerbage(p1.getName(), p2.getName(), damage));
-					} else {
-						//attack failed
+					} else { 
 						System.out.println(this.attackFailVerbage(p1.getName(), p2.getName()));
 					}
 				}
@@ -65,10 +64,7 @@ public class Game {
 					}
 				}
 				
-				if(action == 3){
-					//look for better equipment
-					//make a type of equipment and random and show a compare
-					//if yes atemp a swap
+				if(action == 3){ 
 					Equipment E_new = null; 
 					String type = "";
 					int random_select = r.nextInt(3);
@@ -96,9 +92,14 @@ public class Game {
 					System.out.println("1) Yes");
 					System.out.println("2) No");
 					
+					int option = 0;
+					try{
+						option = sc.nextInt();
+					} catch (InputMismatchException e1){
+						//do nothing
+					}
 					
-					
-					if(sc.nextInt() == 1){
+					if(option == 1){
 						boolean equipment_change = false;
 						
 						if(random_select == 0){
@@ -129,8 +130,7 @@ public class Game {
 					int damage = p1.calculateDamage();
 					p2.takeDamage(damage); 
 					System.out.println(this.attackSuccessfulVerbage(p1.getName(), p2.getName(), damage));
-				} else {
-					//attack failed
+				} else { 
 					System.out.println(this.attackFailVerbage(p1.getName(), p2.getName()));
 				}
 			}
@@ -140,18 +140,17 @@ public class Game {
 			tmp = p1;
 			p1 = p2;
 			p2 = tmp;
-		}//end while loop
+		} 
 		if(this.hero.is_alive()){
-			this.hero.takeDamage( this.hero.getHP() / 2 * -1 );//should restore hp
-			//magic will never increase
+			this.hero.takeDamage( this.hero.getHP() / 2 * -1 ); 
 		}
 	}
 	
 	/**
-	 * 
-	 * @param attacker_name
-	 * @param defender_name
-	 * @param damage
+	 * this function used to display text when attack worked
+	 * @param attacker_name name of the attacker
+	 * @param defender_name name of the defender
+	 * @param damage amount of damage the attacker delt the defender
 	 * @return
 	 */
 	private String attackSuccessfulVerbage(String attacker_name, String defender_name, int damage){
@@ -167,9 +166,9 @@ public class Game {
 	}
 	
 	/**
-	 * 
-	 * @param attacker_name
-	 * @param defender_name
+	 * this function used to display text when attack failed
+	 * @param attacker_name name of the attacker
+	 * @param defender_name name of the defender
 	 * @return
 	 */
 	private String attackFailVerbage(String attacker_name, String defender_name){
@@ -181,10 +180,10 @@ public class Game {
 	}
 	
 	/**
-	 * 
-	 * @param p1
-	 * @param p2
-	 * @return
+	 * this function show stats after each round
+	 * @param p1 player one
+	 * @param p2 player two
+	 * @return a string reperenting the status of both players
 	 */
 	private String statsVerbage(Player p1, Player p2){
 		return p1.getStats() + "\n=========\n" + p2.getStats();

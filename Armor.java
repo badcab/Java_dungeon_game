@@ -42,9 +42,6 @@ public class Armor implements Equipment {
 		this.setName();
 	}
 	
-	/**
-	 * 
-	 */
 	private void setName(){
 		ArrayList<String> name_1 = new ArrayList<String>();
 		ArrayList<String> name_2 = new ArrayList<String>();
@@ -69,21 +66,33 @@ public class Armor implements Equipment {
 		this.name = name_1.get(r.nextInt(name_1.size())) + " " + name_2.get(r.nextInt(name_2.size()))+ " " + name_3.get(r.nextInt(name_3.size()));
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public int getAttackBonus() { 
 		return this.AttackBonus;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public int getArmorBonus() { 
 		return this.ArmorBonus;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public int getSpeedBonus() { 
 		return this.SpeedBonus;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public String printStats() {
 		StringBuilder sb = new StringBuilder();
@@ -96,21 +105,33 @@ public class Armor implements Equipment {
 		return sb.toString();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public int getRequiredStrength() { 
 		return this.RequiredStrength;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public int getRequiredDex() { 
 		return this.RequiredDex;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public String getName() {
 		return this.name;
 	}
-
+	
+	/**
+	 * @return
+	 */
 	@Override
 	public String getStats() {
 		return this.name + " +" + this.ArmorBonus + " Armor and +" + this.AttackBonus + " Attack"; 
