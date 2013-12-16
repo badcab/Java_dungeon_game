@@ -16,10 +16,10 @@ public class Enemy implements Player {
 	
 	/**
 	 * 
-	 * @param h
+	 * @param h hero object so that Enemy will be weaker
 	 */
 	Enemy(Hero h){		
-		this.s = new Shield((int)h.s.getAttackBonus() *3 / 4,(int)h.s.getArmorBonus() *3 / 4);//add overide to set states for this
+		this.s = new Shield((int)h.s.getAttackBonus() *3 / 4,(int)h.s.getArmorBonus() *3 / 4);
 		this.w = new Weapon((int)h.w.getAttackBonus() *3 / 4,(int)h.w.getArmorBonus() *3 / 4);
 		this.a = new Armor((int)h.a.getAttackBonus() *3 / 4,(int)h.a.getArmorBonus() *3 / 4);
 		this.h = new Helm((int)h.h.getAttackBonus() *3 / 4,(int)h.h.getArmorBonus() *3 / 4);
