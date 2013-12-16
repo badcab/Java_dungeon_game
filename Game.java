@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * 
- * @author badcab
+ * @author Michael Spear
  *
  */
 public class Game {
