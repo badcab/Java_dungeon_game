@@ -22,8 +22,8 @@ public class Weapon implements Equipment {
 	
 	/**
 	 * 
-	 * @param AttackBonus
-	 * @param ArmorBonus
+	 * @param AttackBonus attack bonus Weapon will have
+	 * @param ArmorBonus armor bonus Weapon will have
 	 */
 	Weapon(int AttackBonus, int ArmorBonus){
 		this.AttackBonus = AttackBonus;
