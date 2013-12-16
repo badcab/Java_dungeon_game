@@ -14,6 +14,10 @@ public class Enemy implements Player {
 	Helm h;
 	Random r = new Random();
 	
+	/**
+	 * 
+	 * @param h
+	 */
 	Enemy(Hero h){		
 		this.s = new Shield((int)h.s.getAttackBonus() *3 / 4,(int)h.s.getArmorBonus() *3 / 4);//add overide to set states for this
 		this.w = new Weapon((int)h.w.getAttackBonus() *3 / 4,(int)h.w.getArmorBonus() *3 / 4);

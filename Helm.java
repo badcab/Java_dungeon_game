@@ -20,6 +20,11 @@ public class Helm implements Equipment {
 		this.setName();
 	}
 	
+	/**
+	 * 
+	 * @param AttackBonus
+	 * @param ArmorBonus
+	 */
 	Helm(int AttackBonus, int ArmorBonus){
 		this.AttackBonus = AttackBonus;
 		this.ArmorBonus = ArmorBonus;

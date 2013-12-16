@@ -20,6 +20,11 @@ public class Weapon implements Equipment {
 		this.setName();
 	}
 	
+	/**
+	 * 
+	 * @param AttackBonus
+	 * @param ArmorBonus
+	 */
 	Weapon(int AttackBonus, int ArmorBonus){
 		this.AttackBonus = AttackBonus;
 		this.ArmorBonus = ArmorBonus;

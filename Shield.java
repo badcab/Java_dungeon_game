@@ -20,6 +20,11 @@ public class Shield implements Equipment {
 		this.setName();
 	}
 	
+	/**
+	 * 
+	 * @param AttackBonus
+	 * @param ArmorBonus
+	 */
 	Shield(int AttackBonus, int ArmorBonus){
 		this.AttackBonus = AttackBonus;
 		this.ArmorBonus = ArmorBonus;
