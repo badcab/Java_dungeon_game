@@ -22,8 +22,8 @@ public class Helm implements Equipment {
 	
 	/**
 	 * 
-	 * @param AttackBonus
-	 * @param ArmorBonus
+	 * @param AttackBonus attack bonus Helm will have
+	 * @param ArmorBonus armor bonus Helm will have
 	 */
 	Helm(int AttackBonus, int ArmorBonus){
 		this.AttackBonus = AttackBonus;
